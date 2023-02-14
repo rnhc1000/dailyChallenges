@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyChallenges</title>
+</head>
+
+<body>
+
+    In my life, I used the following web search engines:<br />
+    <a href="//www.yahoo.com">Yahoo!</a><br />
+    <a href="//www.altavista.com">AltaVista</a><br />
+    <a href="//www.google.com">Google</a><br />
+
+</body>
+
+</html>
+
+<script>
+    function registerHandlers() {
+        document.getElementsByTagName('a').addEventListener("as", function(event){       
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                alert(i);
+                return false;
+            }
+        }
+        });
+    }
+</script>

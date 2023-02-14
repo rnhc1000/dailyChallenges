@@ -1,0 +1,20 @@
+{
+    "name": "rferreira/php-oop",
+    "description": "oop em php",
+    "authors": [
+        {
+            "name": "Ricardo Ferreira",
+            "email": "rnhc1000@hotmail.com"
+        }
+    ],
+    "license": "proprietary",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "require-dev": {
+        "nunomaduro/phpinsights": "^1.14"
+    }
+}

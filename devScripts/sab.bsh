@@ -1,0 +1,95 @@
+#!/bin/bash
+
+senha="biarenma"
+diretorios=("01-Paiinacio" "02-Tempero" "03-Oxeuaia" "04-Acqua" "05-Caranguejo" "06-Supreme")
+export ANO="`date +%Y`"
+export PATH_SAB_CSV=/home/concilia/clientes/SAB/arquivos/movimentoVendas/${ANO}
+export PATH_SAB_MDB=/home/vftp/barerest/BareRest
+echo ${ANO}
+echo ${PATH_SAB_CSV}
+
+# --- Copia os arquivos e extrai do banco a tabela Caixa Local preservando o nome do arquivo original
+for i in `seq 0 5`;
+do  
+    cd ${PATH_SAB_CSV}/${diretorios[$i]}
+
+    /bin/cp -Rv ${PATH_SAB_MDB}/${diretorios[$i]}/LJ*.zip ${PATH_SAB_CSV}/${diretorios[$i]}
+
+    /usr/bin/find . -name "*LJ*.zip" -type f | while read a
+   
+    do
+
+        /usr/bin/unzip -u -P ${senha} ${a} -d ${PATH_SAB_CSV}/${diretorios[$i]}   
+
+    done
+
+    /usr/bin/find . -name "*LJ*.mdb" -type f | while read b
+
+    do  
+
+        /usr/bin/mdb-export -Q -H -d\? ${b} Caixa\ Local > ${b}.cx
+
+    done
+
+    /bin/rm -rf ${PATH_SAB_CSV}/${diretorios[$i]}/*.zip
+    /bin/rm -rf ${PATH_SAB_CSV}/${diretorios[$i]}/*.mdb
+
+done
+
+# --- Fim da copia dos arquivos
+
+# --- Tratamento do Arquivo Recebido
+for i in `seq 0 5`;
+do
+    cd ${PATH_SAB_CSV}/${diretorios[$i]}
+    /usr/bin/find . -name "*LJ*.cx" -type f | while read a
+    do  
+        /bin/sed -i"" "s/DINHEIRO/DINHEIRO\ DINHEIRO/g" ${a}
+        /bin/sed -i"" "s/AMEX/AMEX\ CREDITO/g" ${a}
+        /bin/sed -i"" "s/HIPER/HIPER\ CREDITO/g" ${a}
+        /bin/sed -i"" "s/IFOOD/IFOOD\ IFOOD/g" ${a}
+        /bin/sed -i"" "s/CHEQUE/CHEQUE\ CHEQUE/g" ${a}
+        /bin/sed -i"" "s/TICKET/TICKET\ TICKET/g" ${a}
+        /bin/sed -i"" "s/DINNERS/DINNERS\ DINNERS/g" ${a}
+        /bin/sed -i"" "s/DINERS/DINERS\ DINERS/g" ${a}
+        /bin/sed -i"" "s/CORTESIA/CORTESIA\ CORTESIA/g" ${a}
+    done
+done
+
+for i in `seq 0 5`;
+do 
+    cd ${PATH_SAB_CSV}/${diretorios[$i]}
+    /usr/bin/find . -name "*LJ*.cx" -type f | while read b
+    do
+        /bin/sed -i"" "s/\?/\'\,\'/g" ${b}
+        /bin/sed -i"" "s/^/\'/g" ${b}
+        /bin/sed -i"" "s/\ /\'\,\'/1" ${b}
+        /bin/sed -i"" "s/\ /\'\,\'/1" ${b}
+        /bin/sed -i"" "s/'',//g" ${b}
+        /bin/sed -i"" -E 's,([0-9]{2})/([0-9]{2})/([0-9]{2}),\3/\1/\2,g' ${b}
+    done
+done
+sep=,
+for i in `seq 0 5`;
+do
+    cd ${PATH_SAB_CSV}/${diretorios[$i]}
+    /usr/bin/find . -name "*LJ*.cx" -type f | while read c
+    do
+        cat ${c} | cut -d ${sep} -f 1,2,4,5,6,10,11,18,23 >> tmp.file
+    done
+done
+
+for i in `seq 0 5`;
+do
+    cd ${PATH_SAB_CSV}/${diretorios[$i]}
+    /usr/bin/find . -name "*tmp.file*" -type f | while read b
+    do
+        #/bin/sed -i"" "s/^/insert\ into\ movimento_loja(datatransacao,horatransacao,tipotransacao,produtotransacao,numerocupom,operadorcaixa,valortotal,numeroloja,numerocaixa)\ values(/g" ${b}
+        /bin/sed -i"" "s/^/insert\ into\ movimento_Estabelecimento (sequencial,data_atual,hora_atual,timestamp_atual,estabelecimento,cnpj_estabelecimento,loja,cnpj_loja,terminal,terminal_validade,rede,tipo_cartao,administrador,tipo_transacao,produto,cartao_bin,cartao_numero,cartao_validade,cartao_entrada,transacao_inicio,transacao_fim,transacao_conclusao,transacao_pagamento,transacao_financiado,erro,transacao_identificacao,transacao_nsu,transacao_nsu_rede,transacao_valor,transacao_parcela,transacao_autorizacao,transacao_resposta,transacao_situacao,numero_cupom, operador_caixa,numero_caixa,numero_loja,usuario_id) values \ values(/g" ${b}
+        /bin/sed -i"" "s/$/\)\;/g" ${b}
+        /usr/bin/mysql -u sab -p sab -pM4n4g3rS4b! < tmp.file
+    done
+done
+
+
+

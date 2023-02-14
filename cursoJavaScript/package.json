@@ -1,0 +1,11 @@
+{
+  "name": "cursojavascript",
+  "version": "1.0.0",
+  "description": "Curso JavaScript C0d3r",
+  "main": "exercicios.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ricardo Ferreira",
+  "license": "ISC"
+}
