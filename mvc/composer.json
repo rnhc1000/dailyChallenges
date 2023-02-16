@@ -1,0 +1,25 @@
+{
+    "name": "rferreira/mvc",
+    "description": "MVC",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Rferreira\\Mvc\\": "src/",
+            "App\\": "app/",
+            "Core\\": "core/"      
+        },
+        "files": ["config/config.php"]
+    },
+    "config": {
+        "apcu-autoloader": true
+    },
+    "authors": [
+        {
+            "name": "Ricardo Ferreira",
+            "email": "rnhc1000@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
