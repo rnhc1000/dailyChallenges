@@ -6,9 +6,9 @@ function whatIsInAName(collection, source) {
     console.log(sourceKeys);
   
     // filter the collection
-  //   return collection.filter(obj => sourceKeys
-  //       .map(key => obj.hasOwnProperty(key) && obj[key] === source[key])
-  //       .reduce((a, b) => a && b));
+     return collection.filter(obj => sourceKeys
+         .map(key => obj.hasOwnProperty(key) && obj[key] === source[key])
+         .reduce((a, b) => a && b));
   }
 
 
@@ -22,7 +22,7 @@ function whatIsInAName(collection, source) {
   console.log(whatIsInAName(obj, source))
 
   obj = [{"a": 1, "b": 2, "c": 3}];
-  source = {"a": 1, "b": 9999, "c": 3}
+  source = {"d": 3}
 //Differences between obj and aray of objects
 
   console.log(whatIsInAName(obj, source))

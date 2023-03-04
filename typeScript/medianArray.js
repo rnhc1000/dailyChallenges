@@ -8,7 +8,7 @@ let findMedianSortedArrays = function(nums1, nums2) {
   console.log(mat)
   let uniqueMat = [...mat];
   console.log(uniqueMat)
-  let sortedMat = uniqueMat.sort(function(a,b) {return a-b});
+  let sortedMat = uniqueMat.sort((a,b) => a-b);
   console.log(sortedMat)
   let lenSorted = sortedMat.length;
   let response = 0;

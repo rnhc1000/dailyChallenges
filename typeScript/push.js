@@ -6,4 +6,4 @@ function mixedNumbers(arr) {
     return arr;
   }
   
-  console.log(mixedNumbers(['IV', 5, 'six']));
+  console.table(mixedNumbers(['IV', 5, 'six']));

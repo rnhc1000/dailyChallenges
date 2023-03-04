@@ -8,6 +8,6 @@ function findElement(arr, func) {
     } return undefined;
   }
 
-  let x = findElement([1, 3, 3, 5], num => num % 2 === 0);
+  let x = findElement([1, 2, 3, 5], num => num % 2 === 1);
 
   console.log(x);

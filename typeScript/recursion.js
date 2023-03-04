@@ -12,7 +12,7 @@ function factorial(num) {
 function decrescingNumberIterating(num) {
   let f = [];
   let i = 0;
-  while (num !== 0) {
+  while (num !== -1) {
     f[i] = num -= 1;
     i++;
     // return num - decrescingNumber(1);
@@ -87,6 +87,6 @@ function reverseArray(arr) {
     l--;
     i++;
   }
-  return {...rra}
+  return [...rra].flat();
 }
 console.log(reverseArray([0,1,2,3]))

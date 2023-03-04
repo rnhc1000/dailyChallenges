@@ -61,7 +61,7 @@ function sumFiboOdd(array,num) {
     return res;
 
 }
-  console.log(sumFiboOdd(geraFibonacci(20),20));
+  console.table(sumFiboOdd(geraFibonacci(20),20));
 
-  console.log(sumFiboEven(geraFibonacci(20),20));
+  console.table(sumFiboEven(geraFibonacci(20),20));
 

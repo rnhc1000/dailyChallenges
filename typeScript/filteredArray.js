@@ -19,6 +19,6 @@ function filteredArray(arr, elem) {
     return newArr;
   }
   
-let x = filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3);
+let x = filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 26);
 
 console.log(x);

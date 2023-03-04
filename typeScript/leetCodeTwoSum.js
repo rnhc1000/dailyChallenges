@@ -18,9 +18,9 @@ var twoSum = function (nums, target) {
   }
 
   const filteredPos = pos.filter((emptyValues) => {
-    return emptyValues !== null &&
-      emptyValues !== 'undefined' &&
-      emptyValues !== "";
+    return  emptyValues !== null &&
+            emptyValues !== 'undefined' &&
+            emptyValues !== "";
   });
 
   return filteredPos;
