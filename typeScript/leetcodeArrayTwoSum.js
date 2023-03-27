@@ -15,6 +15,7 @@ var twoSum = function(nums, target) {
     if (!Array.isArray(nums)) 
         return -1;
     if (nums.length === 0) return -1;
+    // check target is a Number
     target = +target;
     let numLen = nums.length;
     let pos = [];
@@ -40,7 +41,8 @@ var twoSum = function(nums, target) {
 }
 
 //const nums = [34, 23, 12, 24, 75, 33, 54, 8 ];
-const nums = [2,7,11,15];
-let target = 9;
+const nums = [2,7,4,8,10];
+let target = 13;
 
-console.log(twoSum(nums));
+let resp = twoSum(nums,target);
+console.log(resp);
