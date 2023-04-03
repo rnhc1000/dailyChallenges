@@ -9,9 +9,9 @@ var lengthOfLongestSubstring = function(s) {
     let longestStr = 0;
     let sizeOfString = s.length;
     while (curIdx < sizeOfString) {
-      let l = s[curIdx];
-      if (!strSet.has(l)) {
-        strSet.add(l);
+      let char = s[curIdx];
+      if (!strSet.has(char)) {
+        strSet.add(char);
         curIdx++;
         longestStr = Math.max(strSet.size, longestStr);
       } else {
@@ -21,3 +21,11 @@ var lengthOfLongestSubstring = function(s) {
     }
     return longestStr;
   };
+
+
+
+let s = "abcabcbb";
+s= "bbbbbb";
+s = "pwwwkew"
+
+console.log(lengthOfLongestSubstring(s));
