@@ -27,27 +27,37 @@ while 3 and 11 are not.
  * @param {number} n
  * @return {number}
  */
-var numSquares = function(n) {
+var numSquares = function (n) {
+  if (n < 2) return n;
 
-    let guess = n /2;
-    let square = guess * guess;
+  let low = 2;
+  let high = (n / 2).toFixed(0);
+  console.log("High ", high);
+  let mid = 0;
+  let guess = 0;
 
-    while (square < n) {
+  while (low <= high) {
+    mid = +low + +high;
+    
+    console.log("Low ",low);
+    console.log("Mid ",mid);
+    mid = (mid/2).toFixed(0);
+    guess = mid * mid;
+    console.log("Mid ",mid);
+    console.log("Guess ", guess);
 
-        guess = square /2;
 
-        square = guess * guess;
-        
-
-
+    if (guess == n) {
+        return true;
+    } else if (guess > n) {
+        high = mid -= 1;
+    } else {
+        low = mid += 1;
     }
-    
+  //console.log(square);
+    }
+    return false;
 
-    for (i=0; i<n; i++){
+}
 
-        square[i] = i*i;
-    };
-
-    
-    
-};
+console.log(numSquares(144));
