@@ -21,8 +21,8 @@ var findJudge = function(n, trust) {
 };
 
 //let trust =[[1,3],[1,4],[2,3]];
-//let trust = [[1,3],[1,4],[2,3],[2,4],[4,3]];
-let trust=[[1,2]]
+let trust = [[1,3],[1,4],[2,3],[2,4],[4,3]];
+//let trust=[[1,2]]
 let n=2;
 
 console.log(findJudge(n, trust));
