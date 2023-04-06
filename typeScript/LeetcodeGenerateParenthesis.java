@@ -37,6 +37,27 @@ public class LeetcodeGenerateParenthesis {
         LeetcodeGenerateParenthesis leetcodeGenerateParenthesis = new LeetcodeGenerateParenthesis();
 
         System.out.println(leetcodeGenerateParenthesis.generateCombinations(3));
+        String str1 = "hello";
+        String str2 = "hello";
+
+        String str3 = new String("hello");
+        System.out.println(str1 == str2); //true
+
+        /**
+         * String objects in Java are created in a region called
+         * String pool. The reference variable in stack points
+         * to the address in the string pool of thar string.
+         * If you assign to another reference the same string value
+         * java will return the same address bc the object is still there;
+         * The comparison will be equal true
+         * Otherwise if the operator new is used another object
+         * is created with a new reference so the compariso will be false.
+         */
+
+        System.out.println(str3 == str1); //false
+
+        System.out.println(str2.equals(str1)); //true
+        System.out.println(str3.equals(str2)); //true
 
     }
 }
