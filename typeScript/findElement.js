@@ -1,39 +1,41 @@
 /**
- * 
- * @param {*} arr 
- * @param {*} func 
- * @returns 
+ *
+ * @param {*} givenArray
+ * @param {*} func
+ * @returns givenArrayay indicating position of numbers even or odd
+ * @author Ricardo Ferreira <ricardo@ferreiras.dev.br>
+ * @version 1.0
+ *
  */
 
-function findElement(arr, findOdd) {
-  let pos = [];
-    let num = [];
-    for (let idx in arr) {
-      num[idx] = findOdd(arr[idx]);
-      if (num[idx]) {
+function findElement(givenArray, findOdd) {
+  let position = [];
+  let status = [];
+  for (let index in givenArray) {
+    status[index] = findOdd(givenArray[index]);
+    if (status[index]) {
+      position[index] = index;
+    }
+  } 
+  const sanitizedPosition = position.filter((position) => position !== "");
+  const response = status.filter((status) => status === true);
+  console.log(givenArray);
 
-        pos[idx] = idx
+  return sanitizedPosition;
+}
 
-      }
-      console.log(num);
-      // if (num) {
-      //   return arr[idx];
-      // }
-    } //return undefined;
-    console.log(pos);
-    const position = pos.filter(pos => pos !== "");
-    console.log(position);
-    const resp = num.filter(num => num === true);
-    console.log(resp)
+function findOdd(num) {
+  return num % 2 === 1;
+}
 
-  }
+function findEven(num) {
+  return num % 2 === 0;
+}
+
+let x = findElement([1, 2, 3, 7, 15, 147], findOdd);
 
 
-  function findOdd(num) {
+console.log(x);
 
-    return num % 2 == 1;
-  }
-
-  let x = findElement([1, 2, 3, 5], findOdd);
-
-  console.log(x);
+x = findElement([1, 2, 3, 7, 15, 147, 154, 204], findEven);
+console.log(x);
