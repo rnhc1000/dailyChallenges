@@ -13,7 +13,7 @@ public class FindLargestNumber {
         int n2 = input.nextInt();
         System.out.print("Enter the third number: ");
         int n3 = input.nextInt();
-
+        input.close();
         int tmpOne, tmp = 0;
         int tmpTwo = 0;
         //n1 >= n2 ? tmp = n1 : tmp = n2;
