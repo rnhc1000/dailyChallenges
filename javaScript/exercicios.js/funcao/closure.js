@@ -2,7 +2,7 @@
  * Escopo criado quando uma função é declarada
  * este escopo permite à função acessar e manipular
  * variáveis externas à função 
- * Abaico, Contexto Léxixo em ação
+ * Abaixo, Contexto Léxixo em ação
 */
 
 const x = 'Global';

@@ -41,7 +41,7 @@ ola = _  => 'Oi';
 console.log(`${ola()}`);
 /**
  * atenção a construção acima
- * na função normalvc pode passar o parâmetro
+ * na função normal vc pode passar o parâmetro
  * na função arrow apenas o valor
  * para passar por parãmetro
  * vide a seguir:

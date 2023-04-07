@@ -12,8 +12,8 @@ for (let i=0; i < fabricantes.length; i++) {
 
 fabricantes.forEach(imprimir);
 /**
- * O forEach vai ser chamado tantss vezes
- * quaantas necessário  determinado pelo 
+ * O forEach vai ser chamado tantas vezes
+ * quantas necessário  determinado pelo 
  * length de fabricantes.
  * cada elemento do array reresenta um evento
  * no loop que varre o array
