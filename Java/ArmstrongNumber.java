@@ -49,6 +49,8 @@ public class ArmstrongNumber {
 
         System.out.println(sum);
 
+        System.out.println(remainder);
+
         if (possibleNumber == sum) {
             System.out.println("The number " + possibleNumber + " is an Armstrong Number");
         } else {
