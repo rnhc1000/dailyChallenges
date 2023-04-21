@@ -1,3 +1,4 @@
+package Java;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ public class LeetcodeGenerateParenthesis {
         /**
          * String objects in Java are created in a region called
          * String pool. The reference variable in stack points
-         * to the address in the string pool of thar string.
+         * to the address in the string pool of that string.
          * If you assign to another reference the same string value
          * java will return the same address bc the object is still there;
          * The comparison will be equal true
